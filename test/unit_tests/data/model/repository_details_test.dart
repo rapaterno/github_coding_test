@@ -11,7 +11,7 @@ void main() {
           "login": "test_user",
           "avatar_url": "https://test.com/avatar.png"
         },
-        "watcher_count": 10,
+        "watchers_count": 10,
         "stargazers_count": 50,
         "forks_count": 20,
         "open_issues_count": 5,

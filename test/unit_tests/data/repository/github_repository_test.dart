@@ -4,7 +4,6 @@ import 'package:github_coding_test/data/provider/github/github_provider.dart';
 import 'package:github_coding_test/data/repository/github/github_repo_impl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'github_repository_test.mocks.dart';
@@ -24,7 +23,7 @@ void main() {
       // Arrange
       const owner = 'octocat';
       const repoName = 'Hello-World';
-      final expectedRepositoryDetail = RepositoryDetail(
+      const expectedRepositoryDetail = RepositoryDetail(
         id: 1296269,
         name: 'Hello-World',
         owner: 'octocat',
@@ -52,7 +51,7 @@ void main() {
     test('should return a list of GithubRepositoryModel', () async {
       // Arrange
       const query = 'flutter';
-      final expectedRepositories = [
+      const expectedRepositories = [
         GithubRepositoryModel(
           id: 128107138,
           name: 'flutter',

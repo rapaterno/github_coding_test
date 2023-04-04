@@ -1,0 +1,11 @@
+{
+    "searchPackages": "Search packages",
+    "noResultsFound": "No results found",
+    "whatAreYouLookingFor":"What are you looking for?",
+    "thereHasBeenAnErrorPullDownToRefresh": "There has been an error. Pull down to refresh",
+    "stars": "Stars",
+    "watchers": "Watchers",
+    "issues": "Issues",
+    "language": "Language",
+    "forks": "Forks"
+}

@@ -17,16 +17,17 @@ class RepositoryDetail with _$RepositoryDetail {
   }) = _RepositoryDetail;
 
   factory RepositoryDetail.fromJson(Map<String, dynamic> json) {
+    final owner = json['owner'] as Map<String, dynamic>;
     return RepositoryDetail(
       id: json['id'] as int,
       name: json['name'] as String,
-      owner: json['owner']['login'] as String,
-      avatarUrl: json['owner']['avatar_url'] as String,
+      owner: owner['login'] as String,
+      avatarUrl: owner['avatar_url'] as String,
       language: json['language'] as String,
-      numOfWatchers: json['watcher_count'] as int,
+      numOfWatchers: json['watchers_count'] as int,
       numOfForks: json['forks_count'] as int,
-      numOfIssues: json['open_issues_count'],
-      numOfStars: json['stargazers_count'],
+      numOfIssues: json['open_issues_count'] as int,
+      numOfStars: json['stargazers_count'] as int,
     );
   }
 }
