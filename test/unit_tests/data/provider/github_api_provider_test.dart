@@ -34,7 +34,7 @@ void main() {
     final repositories = [GithubRepositoryModel.fromJson(item)];
 
     test('returns a list of GithubRepositoryModel objects', () async {
-      when(mockDio.get(any, queryParameters: {'query': query})).thenAnswer(
+      when(mockDio.get(any, queryParameters: {'q': query})).thenAnswer(
         (_) async => Response(
           data: mockResponse,
           statusCode: 200,
@@ -48,7 +48,7 @@ void main() {
     });
 
     test('throws an exception when response status code is not 200', () async {
-      when(mockDio.get(any, queryParameters: {'query': query})).thenAnswer(
+      when(mockDio.get(any, queryParameters: {'q': query})).thenAnswer(
         (_) async => Response(
           data: mockResponse,
           statusCode: 400,
@@ -69,7 +69,7 @@ void main() {
       'name': 'testRepo',
       'owner': {'login': 'testOwner', 'avatar_url': 'testUrl'},
       'language': 'Dart',
-      'watcher_count': 10,
+      'watchers_count': 10,
       'forks_count': 5,
       'open_issues_count': 3,
       'stargazers_count': 15
