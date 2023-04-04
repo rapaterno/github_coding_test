@@ -1,23 +1,26 @@
 name: github_coding_test
 description: Coding test for CoDev
 
-publish_to: 'none' 
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: ">=2.18.2 <3.0.0"
 
 dependencies:
+  build_runner: ^2.3.3
+  cupertino_icons: ^1.0.2
+  dio: ^5.1.1
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.2
+  freezed: ^2.3.2
+  freezed_annotation: ^2.2.0
 
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^2.0.0
+  mockito: ^5.4.0
 
 flutter:
   uses-material-design: true
