@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class RepoTile extends StatelessWidget {
   const RepoTile({
@@ -31,6 +32,47 @@ class RepoTile extends StatelessWidget {
         ),
       ),
       subtitle: Text(owner),
+    );
+  }
+}
+
+class LoadingRepoTile extends StatelessWidget {
+  const LoadingRepoTile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final baseColor = colorScheme.onBackground.withOpacity(0.1);
+    final highlightColor = colorScheme.onBackground.withOpacity(0.2);
+
+    return ListTile(
+      leading: Shimmer.fromColors(
+        baseColor: baseColor,
+        highlightColor: highlightColor,
+        child: const CircleAvatar(),
+      ),
+      title: Shimmer.fromColors(
+        baseColor: baseColor,
+        highlightColor: highlightColor,
+        child: Container(
+          height: 20,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: colorScheme.background,
+          ),
+        ),
+      ),
+      subtitle: Shimmer.fromColors(
+        baseColor: baseColor,
+        highlightColor: highlightColor,
+        child: Container(
+          height: 15,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: colorScheme.background,
+          ),
+        ),
+      ),
     );
   }
 }

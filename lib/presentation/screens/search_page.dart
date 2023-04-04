@@ -61,42 +61,43 @@ class SearchPage extends HookConsumerWidget {
                 );
               },
               child: packageList.when(
-                  data: ((data) {
-                    if (searchController.text.isEmpty && data.isEmpty) {
-                      return Center(
-                        child: Text(l10n.whatAreYouLookingFor),
-                      );
-                    } else if (data.isEmpty) {
-                      return Center(
-                        child: Text(l10n.noResultsFound),
-                      );
-                    }
+                data: ((data) {
+                  if (searchController.text.isEmpty && data.isEmpty) {
+                    return Center(
+                      child: Text(l10n.whatAreYouLookingFor),
+                    );
+                  } else if (data.isEmpty) {
+                    return Center(
+                      child: Text(l10n.noResultsFound),
+                    );
+                  }
 
-                    return ListView.builder(
-                      itemCount: data.length,
-                      itemBuilder: (context, index) => RepoTile(
-                        name: data.elementAt(index).name,
-                        owner: data.elementAt(index).owner,
-                        avatarUrl: data.elementAt(index).avatarUrl,
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute<void>(
-                            builder: (context) {
-                              return RepoDetailsPage(
-                                owner: data.elementAt(index).owner,
-                                repoName: data.elementAt(index).name,
-                              );
-                            },
-                          ),
+                  return ListView.builder(
+                    itemCount: data.length,
+                    itemBuilder: (context, index) => RepoTile(
+                      name: data.elementAt(index).name,
+                      owner: data.elementAt(index).owner,
+                      avatarUrl: data.elementAt(index).avatarUrl,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (context) {
+                            return RepoDetailsPage(
+                              owner: data.elementAt(index).owner,
+                              repoName: data.elementAt(index).name,
+                            );
+                          },
                         ),
                       ),
-                    );
-                  }),
-                  error: (_, __) =>
-                      Text(l10n.thereHasBeenAnErrorPullDownToRefresh),
-                  loading: () => const Center(
-                        child: CircularProgressIndicator(),
-                      )),
+                    ),
+                  );
+                }),
+                error: (_, __) =>
+                    Text(l10n.thereHasBeenAnErrorPullDownToRefresh),
+                loading: () => ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (_, __) => const LoadingRepoTile()),
+              ),
             ),
           ),
         ],
