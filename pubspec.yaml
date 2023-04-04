@@ -23,6 +23,7 @@ dependencies:
   flutter_localizations: 
     sdk: flutter 
   intl: any
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
