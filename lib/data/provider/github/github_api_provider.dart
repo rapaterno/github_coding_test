@@ -12,13 +12,19 @@ class GithubApiProvider implements GithubProvider {
   @override
   Future<RepositoryDetail> getRepository(
       {required String owner, required String repoName}) async {
-    final response = await dio.get('/repos/$owner/$repoName');
+    final response = await dio.get(
+      '/repos/$owner/$repoName',
+    );
 
     if (response.statusCode != null &&
         response.statusCode! >= 200 &&
         response.statusCode! < 300) {
-      final repository = RepositoryDetail.fromJson(response.data);
-      return repository;
+      try {
+        final repository = RepositoryDetail.fromJson(response.data);
+        return repository;
+      } catch (e) {
+        throw Exception();
+      }
     } else {
       throw Exception();
     }
@@ -27,11 +33,11 @@ class GithubApiProvider implements GithubProvider {
   @override
   Future<Iterable<GithubRepositoryModel>> searchRepositories(
       String query) async {
-    final Map<String, dynamic> queryParams = {'query': query};
-
-    final response =
-        await dio.get('/search/code', queryParameters: queryParams);
-
+    final Map<String, dynamic> queryParams = {'q': query};
+    final response = await dio.get(
+      '/search/repositories',
+      queryParameters: queryParams,
+    );
     if (response.statusCode != null &&
         response.statusCode! >= 200 &&
         response.statusCode! < 300) {
